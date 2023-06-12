@@ -1,18 +1,76 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#define puls1 A0
+#define puls2 A1
+#define puls3 A2
+#define puls4 A3
+#define puls5 A4
+
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  
+  pinMode(puls1, INPUT);
+  pinMode(puls2, INPUT);
+  pinMode(puls3, INPUT);
+  pinMode(puls4, INPUT);
+  pinMode(puls5, INPUT);
+  
+  Serial.begin(57600); // Configura la comunicación serial con el módulo HC-05
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  if(digitalRead(puls1) == HIGH){
+
+     Serial.write('1');
+     delay(50);
+  }
+  if(digitalRead(puls1) == LOW){
+
+     Serial.write('2');
+     delay(50);
+  }
+ 
+  if(digitalRead(puls2) == HIGH){
+
+     Serial.write('2');
+     delay(50);
+  }
+  if(digitalRead(puls2) == LOW){
+
+     Serial.write('2');
+     delay(50);
+  }
+  if(digitalRead(puls3) == HIGH){
+
+     Serial.write('3');
+     delay(50);
+  }
+  if(digitalRead(puls3) == LOW){
+
+     Serial.write('3');
+     delay(50);
+  }
+
+  if(digitalRead(puls4) == HIGH){
+
+     Serial.write('4');
+     delay(50);
+  }
+  if(digitalRead(puls4) == LOW){
+
+     Serial.write('4');
+     delay(50);
+  }
+
+  if(digitalRead(puls5) == HIGH){
+
+     Serial.write('5');
+     delay(50);
+  }
+  if(digitalRead(puls5) == LOW){
+
+     Serial.write('6');
+     delay(50);
+  }
 }
