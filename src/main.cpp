@@ -1,5 +1,5 @@
 #include <Arduino.h>
-
+/*Solo envia mensajes si se esta pulsando, no avisa si se deja de pulsar*/
 #define puls1 A0
 #define puls2 A1
 #define puls3 A2
@@ -25,52 +25,28 @@ void loop() {
      Serial.write('1');
      delay(50);
   }
-  if(digitalRead(puls1) == LOW){
 
-     Serial.write('2');
-     delay(50);
-  }
- 
   if(digitalRead(puls2) == HIGH){
 
-     Serial.write('2');
+     Serial.write('3');
      delay(50);
   }
-  if(digitalRead(puls2) == LOW){
 
-     Serial.write('2');
-     delay(50);
-  }
   if(digitalRead(puls3) == HIGH){
 
-     Serial.write('3');
-     delay(50);
-  }
-  if(digitalRead(puls3) == LOW){
-
-     Serial.write('3');
+     Serial.write('5');
      delay(50);
   }
 
   if(digitalRead(puls4) == HIGH){
 
-     Serial.write('4');
-     delay(50);
-  }
-  if(digitalRead(puls4) == LOW){
-
-     Serial.write('4');
+     Serial.write('7');
      delay(50);
   }
 
   if(digitalRead(puls5) == HIGH){
 
-     Serial.write('5');
-     delay(50);
-  }
-  if(digitalRead(puls5) == LOW){
-
-     Serial.write('6');
+     Serial.write('9');
      delay(50);
   }
 }
