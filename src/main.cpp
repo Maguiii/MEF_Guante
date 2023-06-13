@@ -1,52 +1,75 @@
 #include <Arduino.h>
 /*Solo envia mensajes si se esta pulsando, no avisa si se deja de pulsar*/
-#define puls1 A0
-#define puls2 A1
-#define puls3 A2
-#define puls4 A3
-#define puls5 A4
+#define menique A0
+#define anular A1
+#define indice A2
+#define mayor A3
+#define pulgar A4
 
+int estadoPrograma = 0;
 
 void setup() {
   
-  pinMode(puls1, INPUT);
-  pinMode(puls2, INPUT);
-  pinMode(puls3, INPUT);
-  pinMode(puls4, INPUT);
-  pinMode(puls5, INPUT);
+  pinMode(menique, INPUT);
+  pinMode(anular, INPUT);
+  pinMode(indice, INPUT);
+  pinMode(mayor, INPUT);
+  pinMode(pulgar, INPUT);
   
   Serial.begin(57600); // Configura la comunicación serial con el módulo HC-05
 }
 
 void loop() {
+   switch(estadoPrograma){
 
-  if(digitalRead(puls1) == HIGH){
+      case 0:
+         Serial.write('0');
+         
+         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
+            estadoPrograma = 0;
 
-     Serial.write('1');
-     delay(50);
-  }
+         if(digitalRead(menique) == HIGH && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
+            estadoPrograma = 1;
+         if(digitalRead(menique) == LOW && digitalRead(mayor) == HIGH && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
+            estadoPrograma = 2;
+         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == HIGH && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
+            estadoPrograma = 3;
+         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == HIGH  && digitalRead(pulgar) == LOW)
+            estadoPrograma = 4;
+         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == HIGH)
+            estadoPrograma = 5;
 
-  if(digitalRead(puls2) == HIGH){
+      break;
+      case 1:
+         Serial.write('1');
 
-     Serial.write('3');
-     delay(50);
-  }
+         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
+            estadoPrograma = 0;
+      break;
+      case 2:
+         Serial.write('3');
 
-  if(digitalRead(puls3) == HIGH){
+         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
+            estadoPrograma = 0;
+      break;
+      case 3:
+         Serial.write('5');
 
-     Serial.write('5');
-     delay(50);
-  }
+         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
+            estadoPrograma = 0;
+      break;
+      case 4:
+         Serial.write('7');
 
-  if(digitalRead(puls4) == HIGH){
+         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
+            estadoPrograma = 0;
+      break;
+      case 5:
+         Serial.write('9');
 
-     Serial.write('7');
-     delay(50);
-  }
+         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
+            estadoPrograma = 0;
 
-  if(digitalRead(puls5) == HIGH){
-
-     Serial.write('9');
-     delay(50);
-  }
+      break;
+   }
 }
