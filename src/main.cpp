@@ -1,5 +1,9 @@
 #include <Arduino.h>
-/*Solo envia mensajes si se esta pulsando, no avisa si se deja de pulsar*/
+/*Solo envia mensajes si se esta pulsando, no avisa si se deja de pulsar
+
+   FUNCIONA CON EL PROGRAMA MEF_SuperGuanti
+   
+*/
 #define menique A0
 #define anular A1
 #define indice A2
@@ -20,56 +24,25 @@ void setup() {
 }
 
 void loop() {
-   switch(estadoPrograma){
 
-      case 0:
-         Serial.write('0');
-         
-         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
-            estadoPrograma = 0;
-
-         if(digitalRead(menique) == HIGH && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
-            estadoPrograma = 1;
-         if(digitalRead(menique) == LOW && digitalRead(mayor) == HIGH && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
-            estadoPrograma = 2;
-         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == HIGH && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
-            estadoPrograma = 3;
-         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == HIGH  && digitalRead(pulgar) == LOW)
-            estadoPrograma = 4;
-         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == HIGH)
-            estadoPrograma = 5;
-
-      break;
-      case 1:
-         Serial.write('1');
-
-         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
-            estadoPrograma = 0;
-      break;
-      case 2:
-         Serial.write('3');
-
-         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
-            estadoPrograma = 0;
-      break;
-      case 3:
-         Serial.write('5');
-
-         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
-            estadoPrograma = 0;
-      break;
-      case 4:
-         Serial.write('7');
-
-         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
-            estadoPrograma = 0;
-      break;
-      case 5:
-         Serial.write('9');
-
-         if(digitalRead(menique) == LOW && digitalRead(mayor) == LOW && digitalRead(indice) == LOW && digitalRead(anular) == LOW  && digitalRead(pulgar) == LOW)
-            estadoPrograma = 0;
-
-      break;
+   if(digitalRead(menique)== HIGH){
+      Serial.write('1');
+      delay(100);
+   }
+   if(digitalRead(indice)== HIGH){
+      Serial.write('3');
+      delay(100);
+   }
+   if(digitalRead(mayor)== HIGH){
+      Serial.write('5');
+      delay(100);
+   }
+   if(digitalRead(anular)== HIGH){
+      Serial.write('7');
+      delay(100);
+   }
+   if(digitalRead(pulgar)== HIGH){
+      Serial.write('9');
+      delay(100);
    }
 }
