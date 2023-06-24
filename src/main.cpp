@@ -1,10 +1,14 @@
 #include <Arduino.h>
-/*Solo envia mensajes si se esta pulsando, no avisa si se deja de pulsar
+/*
+   Arreglar este programa que esta horrible
+
+   La parte de contar pulsaciones esta mal asi no funciona el bluetooth
+
+   (Solo envia mensajes si se esta pulsando, no avisa si se deja de pulsar)
 
    FUNCIONA CON EL PROGRAMA MEF_SuperGuanti
 
-   PROBAR SI ANDA MAS RAPIDO LA GRUA AL SACAR EL DELAY
-   
+   Los pines ya estan declarados para usar con la plaqueta
 */
 #define menique A0
 #define anular A1
