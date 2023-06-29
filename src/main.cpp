@@ -34,7 +34,11 @@ void setup() {
 }
 
 void loop() {
-
+/*Cuando se pulsa algun touch el programa se encarga de enviar una señal al otro atmega
+  Cuando se deja de pulsar ese touch se cuenta como una pulsacion
+  
+  Cuando no hay ningun touch pulsado las variables que cuentan las pulsaciones se pasan a string y se envian al otro atmega
+*/
    switch (estadoPrograma)
    {
       case 0:
